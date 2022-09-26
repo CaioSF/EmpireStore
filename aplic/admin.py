@@ -6,6 +6,7 @@ from .models import Produto, Compra, Cliente, Funcionario
 class ProdutoAdmin(admin.ModelAdmin):
     list_display = ('cod_produto', 'descricao', 'lote')
 
+
 @admin.register(Compra)
 class CompraAdmin(admin.ModelAdmin):
     list_display = ('valor', 'quantidade', 'cod_produto')
@@ -19,3 +20,4 @@ class ClienteAdmin(admin.ModelAdmin):
 class FuncionarioAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cpf', 'data_nascimento', 'id_funcionario', 'cargo', 'end_logradouro', 'end_numero', 'end_cep',
                     'end_bairro', 'end_uf', 'end_cidade', 'end_complemento')
+

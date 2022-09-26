@@ -1,8 +1,6 @@
 from django.db import models
 from django.db.models import Model
 
-
-
 class Endereco(models.Model):
     end_logradouro = models.CharField('Logradouro', max_length=200)
     end_numero = models.CharField('Número', blank=True, max_length=10)
@@ -75,7 +73,6 @@ class Produto(models.Model):
         return self.cod_produto
 
 
-
 class Compra(Model):
     valor = models.DecimalField('Preço', max_digits=5, decimal_places=2)
     quantidade = models.IntegerField('Quantidade')
@@ -84,4 +81,5 @@ class Compra(Model):
     class Meta:
         verbose_name = "Compra"
         verbose_name_plural = "Compras"
+
 
