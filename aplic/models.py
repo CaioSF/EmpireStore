@@ -1,4 +1,9 @@
 from django.db import models
+from django.db.models import Model
+
+
+
+
 
 
 
@@ -14,3 +19,15 @@ class Produto(models.Model):
 
     def __str__(self):
         return self.cod_produto
+
+
+class Teste(Model):
+    valor = models.DecimalField('Valor', max_digits=5, decimal_places=2)
+    nome = models.CharField('Nome', max_length=100)
+
+
+    def __str__(self):
+        return self.nome
+
+
+
