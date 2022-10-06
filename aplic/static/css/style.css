@@ -1,0 +1,47 @@
+@font-face {
+    font-family: Jedi;
+    src: url(./../css/Starjedi.ttf);
+}
+
+* {
+    margin: 0%;
+    padding: 0%
+    
+    }
+
+body{
+   background-image: url(../image/espaço.jpg);
+    color: rgb(255, 255, 255);
+  
+
+}
+
+.mainDiv {
+    display: flex;
+    justify-content: center;
+}
+
+header {
+
+    width: 100%;
+    height: 139px;
+    left: 0px;
+    top: 0px;
+
+    background: #000000;
+    border: 1px solid #FFE600;
+}
+
+.mainHeader {
+    display: flex;
+    justify-content: flex-end;
+    
+
+}
+
+.textHeader {
+    display: flex;
+
+    
+}
+
