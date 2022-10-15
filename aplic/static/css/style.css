@@ -11,7 +11,10 @@
 
 body{
    background-image: url(../image/espaço.jpg);
-    color: rgb(255, 255, 255);
+    color: #FFE600;
+    font-family: 'Aldrich';
+
+
   
 
 }
@@ -20,6 +23,24 @@ body{
     display: flex;
     justify-content: center;
 }
+
+.titulo_pag_principal{
+    font-family: 'Jedi';
+    color: black;
+    /* text-shadow: -1px 0px 15px #FFE600; */
+    text-shadow:rgb(255, 230, 0) 1px -1px, rgb(255, 230, 0) -1px 1px, #FFE600 1px 1px, #FFE600 -1px -1px;
+    font-size: 90px;
+   
+    
+}
+
+
+.position{
+    max-width: 200px;
+
+}
+
+
 
 header {
 
@@ -41,7 +62,7 @@ header {
 
 .textHeader {
     display: flex;
-
-    
+    gap: 150px;
+   
+   
 }
-
