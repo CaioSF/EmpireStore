@@ -55,14 +55,17 @@ header {
 
 .mainHeader {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     
-
 }
 
 .textHeader {
     display: flex;
     gap: 150px;
    
-   
 }
+
+/*.minha_conta {
+    font-size: 10px;
+}
+*/
