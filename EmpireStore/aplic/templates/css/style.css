@@ -1,0 +1,178 @@
+@font-face {
+    font-family: Jedi;
+    src: url(./../css/Starjedi.ttf);
+}
+
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    background-image: url(../image/espaço.jpg);
+    color: #ffe600;
+    font-family: "Aldrich";
+}
+
+.mainDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.titulo_pag_principal {
+    font-family: "Jedi";
+    color: black;
+    /* text-shadow: -1px 0px 15px #FFE600; */
+    text-shadow: rgb(255, 230, 0) 1px -1px, rgb(255, 230, 0) -1px 1px, #ffe600 1px 1px, #ffe600 -1px -1px;
+    font-size: 90px;
+}
+
+.position {
+    max-width: 200px;
+}
+
+header {
+    /* width: 100%; */
+    height: 125px;
+    background: #000000;
+    border-bottom: 1px solid #ffe600;
+}
+
+.mainHeader {
+    display: flex;
+    justify-items: flex-start;
+}
+
+.textHeader {
+    display: flex;
+    gap: 150px;
+}
+
+.PositionHeader {
+    display: flex;
+    /* justify-content: flex-end; */
+}
+
+.pai_empire {
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.Card {
+    display: flex;
+    background-color: white;
+    width: 250px;
+    height: 300px;
+    border-radius: 15px;
+    color: black;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.carrinho {
+    background-color: black;
+    border-radius: 05px;
+    color: #ff8a00;
+    height: 36px;
+    width: 200px;
+    border: none;
+}
+
+.carrinho:hover {
+    border: 1px solid #ff8a00;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    height: 36px;
+    width: 200px;
+    transition: 0.5s;
+}
+
+.img {
+    margin-left: 20px;
+}
+
+.imgTeclado {
+    margin-left: 30px;
+}
+
+.imgMouse {
+    margin-left: 40px;
+}
+
+.tituloProduto {
+    font-family: "Inter";
+    font-size: 14px;
+    color: #494747;
+    max-width: 200px;
+}
+
+.posicaoCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+    gap: 5px;
+}
+
+.valorAntes {
+    font-family: "Inter";
+    font-size: 12px;
+    color: #707070;
+    font-weight: 600;
+    text-align: justify;
+}
+
+.ValorReal {
+    font-family: "Inter";
+    font-size: 18px;
+    color: #ff8a00;
+    font-weight: bold;
+}
+
+.promo {
+    text-align: center;
+    max-width: 40px;
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+    background-color: #000000;
+    color: #ffe600;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.promobaixo {
+    text-align: center;
+    max-width: 40px;
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+    background-color: #000000;
+    color: #ffe600;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.Centraliza {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+    justify-content: center;
+    gap: 50px;
+}
+
+.positionCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: centers;
+    margin-top: 3%;
+}
+
+.local1 {
+    display: flex;
+    flex-direction: column;
+}
