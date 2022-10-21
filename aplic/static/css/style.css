@@ -1,0 +1,71 @@
+@font-face {
+    font-family: Jedi;
+    src: url(./../css/Starjedi.ttf);
+}
+
+* {
+    margin: 0%;
+    padding: 0%
+    
+    }
+
+body{
+   background-image: url(../image/espaço.jpg);
+    color: #FFE600;
+    font-family: 'Aldrich';
+
+
+  
+
+}
+
+.mainDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.titulo_pag_principal{
+    font-family: 'Jedi';
+    color: black;
+    /* text-shadow: -1px 0px 15px #FFE600; */
+    text-shadow:rgb(255, 230, 0) 1px -1px, rgb(255, 230, 0) -1px 1px, #FFE600 1px 1px, #FFE600 -1px -1px;
+    font-size: 90px;
+   
+    
+}
+
+
+.position{
+    max-width: 200px;
+
+}
+
+
+
+header {
+
+    width: 100%;
+    height: 139px;
+    left: 0px;
+    top: 0px;
+
+    background: #000000;
+    border: 1px solid #FFE600;
+}
+
+.mainHeader {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.textHeader {
+    display: flex;
+    gap: 150px;
+   
+}
+
+/*.minha_conta {
+    font-size: 10px;
+}
+*/
