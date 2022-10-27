@@ -2,6 +2,8 @@ from statistics import quantiles
 from django.db import models
 from django.forms import IntegerField
 
+
+
 class Endereco(models.Model):
     end_logradouro = models.CharField('Logradouro', max_length=200)
     end_numero = models.CharField('Numero', blank=True, max_length=10)
@@ -46,13 +48,24 @@ class Cliente(Usuario):
     def __str__(self):
         return self.nome
 
+
 class Cargo(models.Model):
-    OPCOES = (
+    OPCOES = (        
         ('Gerente', 'Gerente'),
         ('Atendente', 'Atendente'),
-        ('Faturista', 'Faturista')
+        ('Faturista', 'Faturista'),
     )
-    cargo = models.CharField('Cargo', blank=True, max_length=100, choices=OPCOES)
+    cargo = models.CharField('Cargo', blank=True, max_length=20, choices=OPCOES)
+    
+
+    class Meta:
+        verbose_name = 'Cargo'
+        verbose_name_plural = 'Cargos'
+
+    def __str__(self):
+        return self.cargo
+
+
 
 class Funcionario(Usuario):
     cargo = models.ForeignKey(Cargo, blank=True, on_delete=models.DO_NOTHING)
@@ -65,12 +78,6 @@ class Funcionario(Usuario):
 
     def __str__(self):
         return self.nome
-
-class Estoque(models.Model):
-    quantidade = models.IntegerField('Quantidade')
-
-    def __str__(self):
-        return self.quantidade
 
 class Produto(models.Model):
     OPCOES = (
@@ -117,13 +124,6 @@ class Item_pedido(models.Model):
         return f"{self.produto} {self.quantidade}"
     
 
-class Estoque(models.Model):
-    quantidade = models.IntegerField('Quantidade')
-
-    def __str__(self):
-        return self.quantidade
-
-
 class Pagamento_nfe(models.Model):
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
     data = models.DateField('Data de Nascimento', blank=True, null=True, help_text='Formato DD/MM/AAAA')
@@ -145,10 +145,15 @@ class Compra_fornecedor(models.Model):
     tipo = models.CharField('Tipo', blank=True, max_length=20, choices=OPCOES)
     marca = models.CharField('Marca', max_length=50)
     modelo = models.CharField('Modelo', max_length=30)
-    xmnl = models.CharField('XML', max_length=99999)
+    xml = models.CharField('XML', max_length=99999)
+
+    class Meta:
+        verbose_name = 'Compra Fornecedor'
+        verbose_name_plural = 'Compra Fornecedores'
+
+    def __str__(self):
+        return self.quantidade
     
-
-
 class Fornecedor(models.Model):
     cnpj = models.CharField('CNPJ', max_length=14)
     inscricao_estadual = models.CharField('Inscrição Estadual', max_length=9)
@@ -161,4 +166,27 @@ class Fornecedor(models.Model):
 
     def __str__(self):
         return self.razao_social
+
+class Forma_pagamento(models.Model):
+    OPCOES = (
+        ('Boleto', 'Boleto'),
+        ('Cartão de crédito', 'Cartão de crédito'),
+        ('Cartão de débito', 'Cartão de débito'),
+        ('pix', 'pix'),
+    )
+    forma_pagamento = models.CharField('Forma de pagamento', blank=True, max_length=30, choices=OPCOES)
+
+    class Meta:
+        verbose_name = 'Forma de pagamento'
+        verbose_name_plural = 'Forma de pagamentos'
+    
+class Estoque(models.Model):
+    quantidade = models.IntegerField('Quantidade')
+
+    class Meta:
+        verbose_name = 'Estoque'
+
+    def __str__(self):
+        return self.quantidade
+
 
