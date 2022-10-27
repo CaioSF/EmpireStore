@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Produto, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Fornecedor
+from .models import Produto, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor
 
 
 @admin.register(Cliente)
@@ -30,6 +30,10 @@ class EstoqueAdmin(admin.ModelAdmin):
 @admin.register(Forma_pagamento)
 class Forma_pagamentoAdmin(admin.ModelAdmin):
     list_display = ('forma_pagamento',)
+
+@admin.register(Compra_fornecedor)
+class Compra_fornecedorAdmin(admin.ModelAdmin):
+    list_display = ('quantidade', 'tipo', 'marca', 'modelo', 'xml',)
 
 @admin.register(Fornecedor)
 class FornecedorAdmin(admin.ModelAdmin):
