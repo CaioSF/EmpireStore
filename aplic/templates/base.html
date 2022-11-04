@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Empire Store</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="PositionHeader">
+            <div class="local1">
+
+                <div>
+                    <a href="{% url 'index' %} "> <img src="{% static 'image/empire.png' %}"> </a>
+                </div>
+
+                <div>
+                    <div>Departamentos</div>
+                </div>
+            </div>
+
+            <div>
+                <input type="text" placeholder="Pesquise seu produto">
+            </div>
+            <div class="mainHeader">
+                <div class="textHeader">
+                    <div><a href="{% url 'suporte' %} ">SUPORTE</a></div>
+                    <div><a href="{% url 'pedidos' %} ">PEDIDOS</a></div>
+                    <div class="minha_conta">
+                        MINHA CONTA
+                        <div>ENTRAR / CADASTRO</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% block "body" %}
+{% endblock %}
+</body>
+</html>

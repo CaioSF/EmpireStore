@@ -22,6 +22,7 @@ class Endereco(models.Model):
         return self.end_logradouro
 
 
+
 class Usuario(models.Model):
     nome = models.CharField('Nome', max_length=100)
     cpf = models.CharField('CPF', max_length=11)
