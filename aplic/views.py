@@ -15,3 +15,4 @@ class EntrarView(TemplateView):
 
 class CadastroView(TemplateView):
     template_name = 'cadastro.html'
+    
