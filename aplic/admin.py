@@ -1,6 +1,8 @@
+from re import A
 from django.contrib import admin
 
 from .models import Produto, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor
+
 
 
 @admin.register(Cliente)
