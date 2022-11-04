@@ -86,7 +86,6 @@ class Produto(models.Model):
         ('Teclado', 'Teclado'),
         ('Headset', 'Headset'),
         ('Controle', 'Controle'),
-        ('Impressora', 'Impressora'),
         ('Caixa de Som', 'Caixa de Som'),
     )
     tipo = models.CharField('Tipo', blank=True, max_length=20, choices=OPCOES)
