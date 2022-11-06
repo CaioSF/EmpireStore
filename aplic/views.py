@@ -11,6 +11,11 @@ class ProdutoListView(ListView):
     queryset = Produto.objects.all()
     template_name = "produtos/list.html"
 
+    #def get_context_data(self, *args, **kwargs):
+    #    context = super(ProdutoListView, self).get_context_data(*args, **kwargs)
+    #    print(context)
+    #    return context
+
 
 
 
