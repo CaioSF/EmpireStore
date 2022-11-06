@@ -6,13 +6,14 @@
     <meta charset="UTF-8" />
     <title>Empire Store</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500&display=swap" rel="stylesheet" /> 
+{% block "head" %}
+{% endblock %}
 </head>
 
 <body>
@@ -38,7 +39,7 @@
                     <div><a href="{% url 'pedidos' %} ">PEDIDOS</a></div>
                     <div class="minha_conta">
                         MINHA CONTA
-                        <div>ENTRAR / CADASTRO</div>
+                        <div> <a href="{% url 'entrar' %} ">ENTRAR</a> / <a href="{% url 'cadastro' %}"> CADASTRO</a></div>
                     </div>
                 </div>
             </div>

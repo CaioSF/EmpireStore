@@ -1,7 +1,7 @@
 from re import A
 from django.contrib import admin
 
-from .models import Produto, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor
+from .models import Produto, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor, Cart
 
 
 
@@ -19,7 +19,7 @@ class FuncionarioAdmin(admin.ModelAdmin):
 
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('tipo', 'marca', 'modelo', 'descricao')
+    list_display = ('tipo', 'marca', 'modelo', 'descricao', 'valor')
 
 @admin.register(Endereco)
 class EnderecoAdmin(admin.ModelAdmin):
@@ -40,3 +40,5 @@ class Compra_fornecedorAdmin(admin.ModelAdmin):
 @admin.register(Fornecedor)
 class FornecedorAdmin(admin.ModelAdmin):
     list_display = ('cnpj', 'inscricao_estadual', 'razao_social', 'contato',)
+
+admin.site.register(Cart)
