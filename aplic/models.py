@@ -93,6 +93,7 @@ class Produto(models.Model):
     modelo = models.CharField('Modelo', max_length=30)
     descricao = models.TextField('Descricao', max_length=500)
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
+    image = models.FileField(upload_to='produtos/')
 
     class Meta:
         verbose_name = 'Produto'
