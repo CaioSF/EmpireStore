@@ -1,8 +1,18 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 from django.contrib.auth import authenticate, login, get_user_model
 from .forms import LoginForm, RegisterForm
+
+from .models import Produto
+
+class ProdutoListView(ListView):
+    #traz todos os produtos do banco de dados sem filtrar nada
+    queryset = Produto.objects.all()
+
+
+
+
 
 
 User = get_user_model()
@@ -21,6 +31,9 @@ class SuporteView(TemplateView):
 
 class PedidosView(TemplateView):
     template_name = 'pedidos.html'
+
+
+
 
 def entrar(request):
     form = LoginForm(request.POST or None)
