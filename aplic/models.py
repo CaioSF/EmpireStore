@@ -94,7 +94,6 @@ class Produto(models.Model):
     descricao = models.TextField('Descricao', max_length=500)
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
 
-
     class Meta:
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'

@@ -1,5 +1,10 @@
-{% for obj in object_list %}
+{% extends "base.html" %}
 
-{{ obj.tipo }} {{ obj.marca }} {{ obj.modelo }} <br>
+{% block "body" %}
+{% for obj in object_list %}
+<br> 
+
+{{ obj.tipo }} {{ obj.marca }} {{ obj.modelo }}
 
 {% endfor %}
+{% endblock %}
