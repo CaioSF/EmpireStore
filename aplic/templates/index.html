@@ -2,8 +2,21 @@
 {% load static %}
 
 
+
+{% block "head" %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
 {% block "body" %} 
 <body>
+    {% if request.user.is_authenticated %}
+    <div><br>
+        <br>
+        <br>
+        <h1>Logado</h1>
+        <p>{{ premium_content }}</p>
+    </div>
+    {% endif %}
     <div class="pai_empire">
         <!-- <div class="position">
             <h1 class="titulo_pag_principal">Empire Store</h1>

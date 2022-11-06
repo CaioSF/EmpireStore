@@ -1,11 +1,12 @@
 from django.urls import path
-from .views import IndexView, SuporteView, PedidosView, EntrarView, CadastroView
+from .views import index, SuporteView, PedidosView, entrar, cadastro, cart_home
 
 urlpatterns = [
-    path('', IndexView.as_view(), name='index'),
+    path('', index, name='index'),
     path('suporte/', SuporteView.as_view(), name='suporte'),
     path('pedidos/', PedidosView.as_view(), name='pedidos'),
-    path('entrar/', EntrarView.as_view(), name='entrar'),
-    path('cadastro/', CadastroView.as_view(), name='cadastro'),
+    path('entrar/', entrar, name='entrar'),
+    path('cadastro/', cadastro, name='cadastro'),
+    path('cart/', cart_home, name='cart'),
 ]
 
