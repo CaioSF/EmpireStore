@@ -104,6 +104,13 @@ class Produto(models.Model):
         return f"{self.tipo} {self.marca} {self.modelo}"
 
 
+class ProdutoManager(models.Manager):
+    def get_by_id(self, id):
+        qs = self.get_queryset().filter(id = id)
+        if qs.count() == 1:
+            return qs.first()
+        return None
+
 
 class Pedido(models.Model):
     data = models.DateField('Data de Nascimento', blank=True, null=True, help_text='Formato DD/MM/AAAA')
@@ -112,6 +119,8 @@ class Pedido(models.Model):
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
     quantidade = models.IntegerField('Quantidade')
+
+    objects = ProdutoManager()
 
     
 

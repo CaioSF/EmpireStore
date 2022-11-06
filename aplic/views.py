@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 
@@ -20,11 +21,11 @@ class ProdutoDetailView(DetailView):
     queryset = Produto.objects.all()
     template_name = "produtos/detail.html"
 
+    
     def get_context_data(self, *args, **kwargs):
         context = super(ProdutoDetailView, self).get_context_data(*args, **kwargs)
         print(context)
         return context
-
 
 
 User = get_user_model()
