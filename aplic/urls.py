@@ -1,9 +1,14 @@
 from django.urls import path
 from django.conf import settings
-from django.contrib import admin
 from django.conf.urls.static import static
-from .views import (index, SuporteView, PedidosView, entrar, cadastro, cart_home, 
-ProdutoListView, ProdutoDetailView, ProdutoFeaturedListView, ProdutoFeaturedDetailView)
+from .views import index, entrar, cadastro, cart_home
+from .views import (SuporteView,
+                    PedidosView,
+                    ProdutoListView,
+                    ProdutoDetailView,
+                    ProdutoFeaturedListView,
+                    ProdutoFeaturedDetailView,
+                    ProdutoDetailSlugView)
 
 urlpatterns = [
     path('', index, name='index'),
@@ -13,8 +18,9 @@ urlpatterns = [
     path('cadastro/', cadastro, name='cadastro'),  
     path('featured/', ProdutoFeaturedListView.as_view()),
     path('featured/<int:pk>/', ProdutoFeaturedDetailView.as_view()),
-    path('produtos/', ProdutoListView.as_view(), name='produttos'),
+    path('produtos/', ProdutoListView.as_view(), name='produtos'),
     path('produtos/<int:pk>', ProdutoDetailView.as_view()),
+    path('produtos/<slug:slug>/', ProdutoDetailSlugView.as_view()),
     path('cart/', cart_home, name='cart'),
 ]
 

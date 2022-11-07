@@ -14,7 +14,7 @@ class ProdutoFeaturedListView(ListView):
     def get_queryset(self, *args, **kwargs):
         request = self.request
         return Produto.objects.featured()
-        
+
 
 class ProdutoFeaturedDetailView(DetailView):
     queryset = Produto.objects.all().featured()
@@ -34,6 +34,23 @@ class ProdutoListView(ListView):
     #    context = super(ProdutoListView, self).get_context_data(*args, **kwargs)
     #    print(context)
     #    return context
+
+
+class ProdutoDetailSlugView(DetailView):
+    queryset = Produto.objects.all()
+    template_name = "produtos/detail.html"
+
+    def get_object(self, *args, **kwargs):
+        slug = self.kwargs.get('slug')
+        #instance = get_object_or_404(Product, slug = slug, active = True)
+        try:
+            instance = Produto.objects.get(slug = slug, active = True)
+        except Produto.DoesNotExist:
+            raise Http404("Não encontrado!")
+        except Produto.MultipleObjectsReturned:
+            qs = Produto.objects.filter(slug = slug, active = True)
+            instance =  qs.first()
+        return instance
 
 
 class ProdutoDetailView(DetailView):
