@@ -63,6 +63,27 @@ a {
     display: flex;
     /* justify-content: flex-end; */
 }
-.pesquisa {
 
+
+li {
+    display: inline;
+    
+    padding-left: 200px;
+}
+
+
+input 
+{
+    height: 40px;
+    width: 800px;
+    margin-bottom: 4px;
+}
+
+.cabecalho
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: large;
 }
