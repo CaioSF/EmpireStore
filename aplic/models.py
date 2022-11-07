@@ -2,7 +2,8 @@ from statistics import quantiles
 from django.db import models
 from django.forms import IntegerField
 from django.conf import settings
-
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Endereco(models.Model):
     end_logradouro = models.CharField('Logradouro', max_length=200)
@@ -258,4 +259,5 @@ class Cart(models.Model):
 
     def __str__(self):
         return str(self.id)
+
 

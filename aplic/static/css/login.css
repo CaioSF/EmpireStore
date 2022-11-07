@@ -49,3 +49,24 @@ form input[type=submit]{
     border: 0;
     margin: 10px 0;
 }
+
+
+button
+{
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button:hover
+{
+    color: yellow;
+    background-color: black;
+    box-shadow: 1px 1px 1px yellow, -1px 1px 1px yellow, -1px -1px 1px yellow;;
+    animation-duration: 2s;
+    padding: 2px;
+    
+}
+
