@@ -7,6 +7,24 @@ from .forms import LoginForm, RegisterForm
 
 from .models import Produto
 
+
+class ProdutoFeaturedListView(ListView):
+    template_name = "produtos/list.html"
+
+    def get_queryset(self, *args, **kwargs):
+        request = self.request
+        return Produto.objects.featured()
+        
+
+class ProdutoFeaturedDetailView(DetailView):
+    queryset = Produto.objects.all().featured()
+    template_name = "produtos/featured-detail.html"
+
+    #def get_queryset(self, *args, **kwargs):
+        #request = self.request
+        #return Product.objects.featured()
+
+
 class ProdutoListView(ListView):
     #traz todos os produtos do banco de dados sem filtrar nada
     queryset = Produto.objects.all()
@@ -17,10 +35,10 @@ class ProdutoListView(ListView):
     #    print(context)
     #    return context
 
+
 class ProdutoDetailView(DetailView):
     template_name = "produtos/detail.html"
 
-    
     def get_context_data(self, *args, **kwargs):
         context = super(ProdutoDetailView, self).get_context_data(*args, **kwargs)
         print(context)
@@ -45,13 +63,13 @@ def index(request):
         context["premium_content"] = "Você é um usuário Premium"
     return render(request, "index.html", context) 
 
+
 class SuporteView(TemplateView):
     template_name = 'suporte.html'
 
+
 class PedidosView(TemplateView):
     template_name = 'pedidos.html'
-
-
 
 
 def entrar(request):
@@ -61,13 +79,14 @@ def entrar(request):
     }
     print("User logged in")
     print(request.user.is_authenticated)
+
     if form.is_valid():
         print(form.cleaned_data)
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
         user = authenticate(request, username=username, password=password)
         print(user)
-        print(request.user.is_authenticated)
+        print(request.user.is_authenticated)     
         if user is not None:
             print(request.user.is_authenticated)
             login(request, user)
