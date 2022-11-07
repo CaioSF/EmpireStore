@@ -89,6 +89,10 @@ class PedidosView(TemplateView):
     template_name = 'pedidos.html'
 
 
+class ChatView(TemplateView):
+    template_name = 'chat/chatroom.html'
+
+
 def entrar(request):
     form = LoginForm(request.POST or None)
     context = {
@@ -141,3 +145,11 @@ def cadastro(request):
     return render(request, "auth/entrar.html", context)
     
     
+
+#chat-suporte
+def room(request, room_name):
+    return render(request, 'chatroom.html', {
+        'room_name': room_name
+
+    })
+        
