@@ -129,6 +129,9 @@ class Produto(models.Model):
 
     objects = ProdutoManager()
 
+    def get_absolute_url(self):
+        return "/products/{slug}/".format(slug = self.slug)
+
 
     class Meta: 
         verbose_name = 'Produto'
