@@ -117,7 +117,7 @@ class Produto(models.Model):
         ('Caixa de Som', 'Caixa de Som'),
     )
     tipo = models.CharField('Tipo', blank=True, max_length=20, choices=OPCOES)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(blank=True, unique=True)
     marca = models.CharField('Marca', max_length=50)
     modelo = models.CharField('Modelo', max_length=30)
     descricao = models.TextField('Descricao', max_length=500)
@@ -137,6 +137,13 @@ class Produto(models.Model):
 
     def __str__(self):
         return f"{self.tipo} {self.marca} {self.modelo}"
+
+
+def produto_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+pre_save.connect(produto_pre_save_receiver, sender = Produto)
 
 
 
