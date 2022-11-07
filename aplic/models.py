@@ -130,7 +130,7 @@ class Produto(models.Model):
     objects = ProdutoManager()
 
 
-    class Meta:
+    class Meta: 
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
 
@@ -143,7 +143,7 @@ def produto_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)
 
-pre_save.connect(produto_pre_save_receiver, sender = Produto)
+    pre_save.connect(produto_pre_save_receiver, sender = Produto)
 
 
 
