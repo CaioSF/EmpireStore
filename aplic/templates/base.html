@@ -31,17 +31,14 @@
             </div>
 
             <div class="pesquisa">
-                <input type="text" placeholder="Pesquise seu produto">
+                
             </div>
-            <div class="mainHeader">
-                <div class="textHeader">
-                    <div><a href="{% url 'suporte' %} ">SUPORTE</a></div>
-                    <div><a href="{% url 'pedidos' %} ">PEDIDOS</a></div>
-                    <div class="minha_conta">
-                        MINHA CONTA
-                        <div> <a href="{% url 'entrar' %} ">ENTRAR</a> / <a href="{% url 'cadastro' %}"> CADASTRO</a></div>
-                    </div>
-                </div>
+            <div class="cabecalho"><ul>
+                    <li href="{% url 'pedidos' %}">PEDIDOS</li>
+                    <li href="{% url 'suporte' %}">SUPORTE</li>
+                    <li><a href="{% url 'entrar' %}">ENTRAR</a> / <a href="{% url 'cadastro' %}">CADASTRO</a></li>
+                </ul>
+                <input class="pesquisa" type="text" placeholder="Pesquise seu produto">
             </div>
         </div>
     </header>

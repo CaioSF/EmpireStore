@@ -17,9 +17,12 @@ class CargoAdmin(admin.ModelAdmin):
 class FuncionarioAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cpf', 'data_nascimento', 'salario')
 
+
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('tipo', 'marca', 'modelo', 'descricao', 'valor')
+    list_display = ('__str__', 'slug')
+    class meta:
+        model = Produto
 
 @admin.register(Endereco)
 class EnderecoAdmin(admin.ModelAdmin):

@@ -2,7 +2,8 @@ from statistics import quantiles
 from django.db import models
 from django.forms import IntegerField
 from django.conf import settings
-
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Endereco(models.Model):
     end_logradouro = models.CharField('Logradouro', max_length=200)
@@ -80,6 +81,33 @@ class Funcionario(Usuario):
     def __str__(self):
         return self.nome
 
+
+class ProdutoQuerySet(models.query.QuerySet):
+    def active(self):
+        return self.filter(active = True)
+
+    def featured(self):
+        return self.filter(featured = True, active=True)
+
+
+class ProdutoManager(models.Manager):
+    def get_queryset(self):
+        return ProdutoQuerySet(self.model, using=self._db)
+    
+    def all(self):
+        return self.get_queryset().active()
+
+    def featured(self):
+        #self.getqueryset().filter(featured = True)
+        return self.get_queryset().featured()
+
+    def get_by_id(self, id):
+        qs = self.get_queryset().filter(id = id)
+        if qs.count() == 1:
+            return qs.first()
+        return None
+
+
 class Produto(models.Model):
     OPCOES = (
         ('Mouse', 'Mouse'),
@@ -89,11 +117,18 @@ class Produto(models.Model):
         ('Caixa de Som', 'Caixa de Som'),
     )
     tipo = models.CharField('Tipo', blank=True, max_length=20, choices=OPCOES)
+    slug = models.SlugField()
     marca = models.CharField('Marca', max_length=50)
     modelo = models.CharField('Modelo', max_length=30)
     descricao = models.TextField('Descricao', max_length=500)
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='produtos/', null=True, blank=True)
+    featured    = models.BooleanField(default = False)
+    active      = models.BooleanField(default = True)
+
+
+    objects = ProdutoManager()
+
 
     class Meta:
         verbose_name = 'Produto'
@@ -104,13 +139,6 @@ class Produto(models.Model):
         return f"{self.tipo} {self.marca} {self.modelo}"
 
 
-class ProdutoManager(models.Manager):
-    def get_by_id(self, id):
-        qs = self.get_queryset().filter(id = id)
-        if qs.count() == 1:
-            return qs.first()
-        return None
-
 
 class Pedido(models.Model):
     data = models.DateField('Data de Nascimento', blank=True, null=True, help_text='Formato DD/MM/AAAA')
@@ -120,7 +148,6 @@ class Pedido(models.Model):
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
     quantidade = models.IntegerField('Quantidade')
 
-    objects = ProdutoManager()
 
     
 
@@ -232,4 +259,5 @@ class Cart(models.Model):
 
     def __str__(self):
         return str(self.id)
+
 
