@@ -19,10 +19,10 @@ class FuncionarioAdmin(admin.ModelAdmin):
 
 
 @admin.register(Produto)
-class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'slug')
-    class meta:
-        model = Produto
+class ProductAdmin(admin.ModelAdmin):
+	list_display = ('__str__', 'slug')
+	class meta:
+		model = Produto
 
 @admin.register(Endereco)
 class EnderecoAdmin(admin.ModelAdmin):
