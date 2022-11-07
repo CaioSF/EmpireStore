@@ -81,13 +81,30 @@ class Funcionario(Usuario):
         return self.nome
 
 
+class ProdutoQuerySet(models.query.QuerySet):
+    def active(self):
+        return self.filter(active = True)
+
+    def featured(self):
+        return self.filter(featured = True, active=True)
+
+
 class ProdutoManager(models.Manager):
+    def get_queryset(self):
+        return ProdutoQuerySet(self.model, using=self._db)
+    
+    def all(self):
+        return self.get_queryset().active()
+
+    def featured(self):
+        #self.getqueryset().filter(featured = True)
+        return self.get_queryset().featured()
+
     def get_by_id(self, id):
         qs = self.get_queryset().filter(id = id)
         if qs.count() == 1:
             return qs.first()
         return None
-
 
 
 class Produto(models.Model):
@@ -104,6 +121,8 @@ class Produto(models.Model):
     descricao = models.TextField('Descricao', max_length=500)
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='produtos/', null=True, blank=True)
+    featured    = models.BooleanField(default = False)
+    active      = models.BooleanField(default = True)
 
 
     objects = ProdutoManager()
