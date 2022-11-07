@@ -18,7 +18,6 @@ class ProdutoListView(ListView):
     #    return context
 
 class ProdutoDetailView(DetailView):
-    queryset = Produto.objects.all()
     template_name = "produtos/detail.html"
 
     
@@ -26,6 +25,13 @@ class ProdutoDetailView(DetailView):
         context = super(ProdutoDetailView, self).get_context_data(*args, **kwargs)
         print(context)
         return context
+
+    def get_object(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        instance = Produto.objects.get_by_id(pk)
+        if instance is None:
+            raise Http404("Esse produto não existe!")
+        return instance
 
 
 User = get_user_model()

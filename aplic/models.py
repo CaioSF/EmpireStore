@@ -80,6 +80,16 @@ class Funcionario(Usuario):
     def __str__(self):
         return self.nome
 
+
+class ProdutoManager(models.Manager):
+    def get_by_id(self, id):
+        qs = self.get_queryset().filter(id = id)
+        if qs.count() == 1:
+            return qs.first()
+        return None
+
+
+
 class Produto(models.Model):
     OPCOES = (
         ('Mouse', 'Mouse'),
@@ -95,6 +105,10 @@ class Produto(models.Model):
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='produtos/', null=True, blank=True)
 
+
+    objects = ProdutoManager()
+
+
     class Meta:
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
@@ -103,13 +117,6 @@ class Produto(models.Model):
     def __str__(self):
         return f"{self.tipo} {self.marca} {self.modelo}"
 
-
-class ProdutoManager(models.Manager):
-    def get_by_id(self, id):
-        qs = self.get_queryset().filter(id = id)
-        if qs.count() == 1:
-            return qs.first()
-        return None
 
 
 class Pedido(models.Model):
@@ -120,7 +127,6 @@ class Pedido(models.Model):
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
     quantidade = models.IntegerField('Quantidade')
 
-    objects = ProdutoManager()
 
     
 
