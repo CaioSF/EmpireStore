@@ -116,6 +116,7 @@ class Produto(models.Model):
         ('Caixa de Som', 'Caixa de Som'),
     )
     tipo = models.CharField('Tipo', blank=True, max_length=20, choices=OPCOES)
+    slug = models.SlugField()
     marca = models.CharField('Marca', max_length=50)
     modelo = models.CharField('Modelo', max_length=30)
     descricao = models.TextField('Descricao', max_length=500)
