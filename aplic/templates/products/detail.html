@@ -1,6 +1,10 @@
-{{ object.tipo }} 
-{{ object.marca }} 
-{{ object.modelo }} 
-{% if object.image %}
-    <img src='{{ object.image.url }}' class='img-fluid'/>
-{% endif %}
+
+{% extends "base.html" %}
+
+{% block content %}
+    {{ object.title }} 
+    {{ object.description }} 
+    {% if object.image %}
+        <img src='{{ object.image.url }}' class='img-fluid'/>
+    {% endif %}
+{% endblock content %}

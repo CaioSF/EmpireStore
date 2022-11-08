@@ -9,8 +9,9 @@ from .views import (SuporteView,
                     ProductDetailView,
                     ProductFeaturedListView,
                     ProductFeaturedDetailView,
-                    ProductDetailSlugView,
-                    ChatView,)
+                    ProductDetailSlugView,)
+
+
 
 urlpatterns = [
     path('', index, name='index'),
@@ -23,9 +24,8 @@ urlpatterns = [
     path('products/', ProductListView.as_view(), name='products'),
     path('products/<int:pk>', ProductDetailView.as_view()),
     path('products/<slug:slug>/', ProductDetailSlugView.as_view()),
+    path('<slug:slug>/', ProductDetailSlugView.as_view()),
     path('cart/', cart_home, name='cart'),
-    path('chatroom/', ChatView.as_view(), name='chat'),
-    path('<str:room_name>/', views.room, name='room'),
 ]
 
 if settings.DEBUG:

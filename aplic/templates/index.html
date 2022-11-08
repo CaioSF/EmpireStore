@@ -1,178 +1,28 @@
 {% extends "base.html" %}
+
 {% load static %}
 
-
-
-{% block "head" %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
-{% endblock %}
-
-{% block "body" %} 
-<body>
-    {% if request.user.is_authenticated %}
-    <div><br>
-        <br>
-        <br>
-        <h1>Logado</h1>
-        <p>{{ premium_content }}</p>
+<title>Home Page Template</title>
+{% block content %}
+    <div class='text-center'>
+        <h1>{{ title }}</h1>
+             <p>{{ content }}</p>
     </div>
-    {% endif %}
-    <div class="pai_empire">
-        <!-- <div class="position">
-            <h1 class="titulo_pag_principal">Empire Store</h1>
-        </div> -->
+    <div class='container'>
+	<div class='row'>
+	    <div class='col'>
+		<img src="{% static 'img/eCommerce.jpeg' %}" class='img-fluid' />
+		<p>{{ content }}</p>
+	    </div>
+	</div>
 
-        <img src="{% static 'image/Empire - logo.png' %}" />
+	{% if request.user.is_authenticated %}
+	    <div class='row'>
+		<div class='col'>
+		    <h1>Premium</h1>
+			<p>{{ premium_content }}</p>
+		</div>
+	    </div>
+	{% endif %}
     </div>
-
-    <div class="positionCards">
-        <div class="Centraliza">
-            <div class="Card">
-                <div class="promo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="img">
-                        <img src="{% static 'image/headset_blackshark 1.png' %}" />
-                    </div>
-                    <div class="tituloProduto">Headset Gamer Razer BlackShark V2</div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-            <div class="Card">
-                <div class="promo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="img">
-                        <img src="{% static 'image/Produto2.png' %}" />
-                    </div>
-                    <div class="tituloProduto">Headset Gamer HyperX Cloud Stinger</div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-            <div class="Card">
-                <div class="promo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="imgMouse">
-                        <img src="{% static 'image/Produto3.png' %}" />
-                    </div>
-                    <div class="tituloProduto">Headset Gamer Redragon Zeus X
-                    </div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-            <div class="Card">
-                <div class="promo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="imgMouse">
-                        <img src="{% static 'image/Produto4.png' %}" />
-                    </div>
-                    <div class="tituloProduto">Mouse Gamer Redragon Cobra
-                    </div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-            <div class="Card">
-                <div class="promo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="imgMouse">
-                        <img src="{% static 'image//Produto5.png' |%}" />
-                    </div>
-                    <div class="tituloProduto">Mouse Gamer Redragon Cobra Lunar White
-                    </div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-            <div class="Card">
-                <div class="promo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="imgTeclado">
-                        <img src="{% static 'image/Produto6.png' %}" />
-                    </div>
-                    <div class="tituloProduto">Mouse Gamer HyperX Pulsefire
-                    </div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-            <div class="Card">
-                <div class="promobaixo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="imgTeclado">
-                        <img src="{% static 'image/Produto7.png' %}" />
-                    </div>
-                    <div class="tituloProduto">Teclado Gamer HyperX Alloy
-                    </div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-            <div class="Card">
-                <div class="promo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="imgTeclado">
-                        <img src="{% static 'image/Produto8.png' %}" />
-                    </div>
-                    <div class="tituloProduto">Teclado Mecânico Gamer T-Dagger Bora</div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-            <div class="Card">
-                <div class="promo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="imgTeclado">
-                        <img src="{% static 'image/Produto9.png' %}" />
-                    </div>
-                    <div class="tituloProduto">Teclado Mecânico Gamer Redragon Dark Avenger Lunar
-                    </div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-            <div class="Card">
-                <div class="promo">38% ▼</div>
-                <div class="posicaoCard">
-                    <div class="imgTeclado">
-                        <img src="{% static 'image/Produto10.png' %}" />
-                    </div>
-                    <div class="tituloProduto">Teclado Mecânico Gamer Redragon Kumara
-                    </div>
-                    <div class="valorAntes">R̶$̶ ̶3̶5̶2̶,̶9̶3̶</div>
-                    <div class="ValorReal">R$ 279,99</div>
-
-                    <button class="carrinho">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-        </div>
-</body>
 {% endblock %}
