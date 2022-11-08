@@ -122,6 +122,7 @@ class Product(models.Model):
     modelo = models.CharField('Modelo', max_length=30)
     descricao = models.TextField('Descricao', max_length=500)
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
+    title = models.CharField('title', max_length=250, default='Product')
     image = models.ImageField(upload_to='products/', null=True, blank=True)
     featured = models.BooleanField(default = False)
     active = models.BooleanField(default = True)
