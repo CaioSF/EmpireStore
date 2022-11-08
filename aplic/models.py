@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .utils import unique_slug_generator
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
+from django.urls import reverse
 
 
 class Endereco(models.Model):
@@ -136,6 +137,7 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return "/products/{slug}/".format(slug = self.slug)
+        #return reverse("detail", kwargs={"slug": self.slug})
         
 
     def __str__(self):

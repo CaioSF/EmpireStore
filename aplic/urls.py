@@ -12,7 +12,6 @@ from .views import (SuporteView,
                     ProductDetailSlugView,)
 
 
-
 urlpatterns = [
     path('', index, name='index'),
     path('suporte/', SuporteView.as_view(), name='suporte'),
@@ -24,7 +23,7 @@ urlpatterns = [
     path('products/', ProductListView.as_view(), name='products'),
     path('products/<int:pk>', ProductDetailView.as_view()),
     path('products/<slug:slug>/', ProductDetailSlugView.as_view()),
-    path('<slug:slug>/', ProductDetailSlugView.as_view()),
+    path('<slug:slug>/', ProductDetailSlugView.as_view(), name='detail'),
     path('cart/', cart_home, name='cart'),
 ]
 
