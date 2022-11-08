@@ -1,4 +1,5 @@
 from django.urls import path
+from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import index, entrar, cadastro, cart_home
@@ -8,7 +9,8 @@ from .views import (SuporteView,
                     ProdutoDetailView,
                     ProdutoFeaturedListView,
                     ProdutoFeaturedDetailView,
-                    ProdutoDetailSlugView)
+                    ProdutoDetailSlugView,
+                    ChatView,)
 
 urlpatterns = [
     path('', index, name='index'),
@@ -22,6 +24,8 @@ urlpatterns = [
     path('produtos/<int:pk>', ProdutoDetailView.as_view()),
     path('produtos/<slug:slug>/', ProdutoDetailSlugView.as_view()),
     path('cart/', cart_home, name='cart'),
+    path('chatroom/', ChatView.as_view(), name='chat'),
+    path('<str:room_name>/', views.room, name='room'),
 ]
 
 if settings.DEBUG:

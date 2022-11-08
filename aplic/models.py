@@ -1,9 +1,9 @@
-from statistics import quantiles
 from django.db import models
-from django.forms import IntegerField
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.utils import timezone
+from .utils import unique_slug_generator
+from django.db.models.signals import pre_save
+from django.utils.text import slugify
 
 class Endereco(models.Model):
     end_logradouro = models.CharField('Logradouro', max_length=200)
@@ -117,26 +117,33 @@ class Produto(models.Model):
         ('Caixa de Som', 'Caixa de Som'),
     )
     tipo = models.CharField('Tipo', blank=True, max_length=20, choices=OPCOES)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(blank=True, unique=True)
     marca = models.CharField('Marca', max_length=50)
     modelo = models.CharField('Modelo', max_length=30)
     descricao = models.TextField('Descricao', max_length=500)
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='produtos/', null=True, blank=True)
-    featured    = models.BooleanField(default = False)
-    active      = models.BooleanField(default = True)
+    featured = models.BooleanField(default = False)
+    active = models.BooleanField(default = True)
 
-
-    objects = ProdutoManager()
-
-
-    class Meta:
+    class Meta: 
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
 
+    objects = ProdutoManager()
+
+    def get_absolute_url(self):
+        return "/produtos/{slug}/".format(slug = self.slug)
 
     def __str__(self):
         return f"{self.tipo} {self.marca} {self.modelo}"
+
+
+def produto_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+    pre_save.connect(produto_pre_save_receiver, sender = Produto)
 
 
 
