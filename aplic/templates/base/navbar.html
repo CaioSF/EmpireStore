@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Produtos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Todos os produtos</a>
+                    <a class="dropdown-item" href="{% url 'products' %}">Todos os produtos</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Mouse</a>          
+                    <a class="dropdown-item" href="{% url 'index' %}">Mouse</a>          
                     <a class="dropdown-item" href="#">Teclado</a>
                     <a class="dropdown-item" href="#">Headset</a>
                     <a class="dropdown-item" href="#">Controle</a>
@@ -24,13 +24,13 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Suporte</a>
+                <a class="nav-link disabled" href="{% url 'suporte' %}">Suporte</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Login</a>
+                <a class="nav-link disabled" href="{% url 'entrar' %}">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Cadastro</a>
+                <a class="nav-link disabled" href="{% url 'cadastro' %}">Cadastro</a>
             </li>
       </ul>
         <form class="form-inline my-2 my-lg-0">
