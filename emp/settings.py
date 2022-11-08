@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +55,7 @@ ROOT_URLCONF = 'emp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates','chat/templates'],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,7 +69,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'emp.wsgi.application'
-ASGI_APPLICATION = 'emp.routing.application'
+
 
 
 # Database
@@ -128,9 +127,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 LOGOUT_REDIRECT_URL = 'index'
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        
-    }
-}

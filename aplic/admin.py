@@ -1,7 +1,7 @@
 from re import A
 from django.contrib import admin
 
-from .models import Produto, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor, Cart
+from .models import Product, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor, Cart
 
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
@@ -16,11 +16,11 @@ class FuncionarioAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cpf', 'data_nascimento', 'salario')
 
 
-@admin.register(Produto)
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('__str__', 'slug')
 	class meta:
-		model = Produto
+		model = Product
 
 @admin.register(Endereco)
 class EnderecoAdmin(admin.ModelAdmin):
