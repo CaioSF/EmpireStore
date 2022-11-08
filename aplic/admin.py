@@ -3,8 +3,6 @@ from django.contrib import admin
 
 from .models import Produto, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor, Cart
 
-
-
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cpf', 'data_nascimento')
