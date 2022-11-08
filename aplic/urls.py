@@ -5,11 +5,11 @@ from django.conf.urls.static import static
 from .views import index, entrar, cadastro, cart_home
 from .views import (SuporteView,
                     PedidosView,
-                    ProdutoListView,
-                    ProdutoDetailView,
-                    ProdutoFeaturedListView,
-                    ProdutoFeaturedDetailView,
-                    ProdutoDetailSlugView,
+                    ProductListView,
+                    ProductDetailView,
+                    ProductFeaturedListView,
+                    ProductFeaturedDetailView,
+                    ProductDetailSlugView,
                     ChatView,)
 
 urlpatterns = [
@@ -18,11 +18,11 @@ urlpatterns = [
     path('pedidos/', PedidosView.as_view(), name='pedidos'),
     path('entrar/', entrar, name='entrar'),
     path('cadastro/', cadastro, name='cadastro'),  
-    path('featured/', ProdutoFeaturedListView.as_view()),
-    path('featured/<int:pk>/', ProdutoFeaturedDetailView.as_view()),
-    path('produtos/', ProdutoListView.as_view(), name='produtos'),
-    path('produtos/<int:pk>', ProdutoDetailView.as_view()),
-    path('produtos/<slug:slug>/', ProdutoDetailSlugView.as_view()),
+    path('featured/', ProductFeaturedListView.as_view()),
+    path('featured/<int:pk>/', ProductFeaturedDetailView.as_view()),
+    path('products/', ProductListView.as_view(), name='products'),
+    path('products/<int:pk>', ProductDetailView.as_view()),
+    path('products/<slug:slug>/', ProductDetailSlugView.as_view()),
     path('cart/', cart_home, name='cart'),
     path('chatroom/', ChatView.as_view(), name='chat'),
     path('<str:room_name>/', views.room, name='room'),

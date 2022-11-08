@@ -5,67 +5,67 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth import authenticate, login, get_user_model
 from .forms import LoginForm, RegisterForm
 
-from .models import Produto
+from .models import Product
 
 
-class ProdutoFeaturedListView(ListView):
-    template_name = "produtos/list.html"
+class ProductFeaturedListView(ListView):
+    template_name = "products/list.html"
 
     def get_queryset(self, *args, **kwargs):
         request = self.request
-        return Produto.objects.featured()
+        return Product.objects.featured()
 
 
-class ProdutoFeaturedDetailView(DetailView):
-    queryset = Produto.objects.all().featured()
-    template_name = "produtos/featured-detail.html"
+class ProductFeaturedDetailView(DetailView):
+    queryset = Product.objects.all().featured()
+    template_name = "products/featured-detail.html"
 
     #def get_queryset(self, *args, **kwargs):
         #request = self.request
         #return Product.objects.featured()
 
 
-class ProdutoListView(ListView):
-    #traz todos os produtos do banco de dados sem filtrar nada
-    queryset = Produto.objects.all()
-    template_name = "produtos/list.html"
+class ProductListView(ListView):
+    #traz todos os products do banco de dados sem filtrar nada
+    queryset = Product.objects.all()
+    template_name = "products/list.html"
 
     #def get_context_data(self, *args, **kwargs):
-    #    context = super(ProdutoListView, self).get_context_data(*args, **kwargs)
+    #    context = super(ProductListView, self).get_context_data(*args, **kwargs)
     #    print(context)
     #    return context
 
 
-class ProdutoDetailSlugView(DetailView):
-    queryset = Produto.objects.all()
-    template_name = "produtos/detail.html"
+class ProductDetailSlugView(DetailView):
+    queryset = Product.objects.all()
+    template_name = "products/detail.html"
 
     def get_object(self, *args, **kwargs):
         slug = self.kwargs.get('slug')
         #instance = get_object_or_404(Product, slug = slug, active = True)
         try:
-            instance = Produto.objects.get(slug = slug, active = True)
-        except Produto.DoesNotExist:
+            instance = Product.objects.get(slug = slug, active = True)
+        except Product.DoesNotExist:
             raise Http404("Não encontrado!")
-        except Produto.MultipleObjectsReturned:
-            qs = Produto.objects.filter(slug = slug, active = True)
+        except Product.MultipleObjectsReturned:
+            qs = Product.objects.filter(slug = slug, active = True)
             instance =  qs.first()
         return instance
 
 
-class ProdutoDetailView(DetailView):
-    template_name = "produtos/detail.html"
+class ProductDetailView(DetailView):
+    template_name = "products/detail.html"
 
     def get_context_data(self, *args, **kwargs):
-        context = super(ProdutoDetailView, self).get_context_data(*args, **kwargs)
+        context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
         print(context)
         return context
 
     def get_object(self, *args, **kwargs):
         pk = self.kwargs.get('pk')
-        instance = Produto.objects.get_by_id(pk)
+        instance = Product.objects.get_by_id(pk)
         if instance is None:
-            raise Http404("Esse produto não existe!")
+            raise Http404("Esse product não existe!")
         return instance
 
 
