@@ -2,10 +2,8 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import index, entrar, cadastro, cart_home
-from .views import (suporte,
-                    pedidos,
-                    ProductListView,
+from .views import index, entrar, cadastro, cart_home, suporte, pedidos, logout_page
+from .views import (ProductListView,
                     ProductDetailView,
                     ProductFeaturedListView,
                     ProductFeaturedDetailView,
@@ -17,6 +15,7 @@ urlpatterns = [
     path('suporte/', suporte, name='suporte'),
     path('pedidos/', pedidos, name='pedidos'),
     path('entrar/', entrar, name='entrar'),
+    path('logout/', logout_page, name='logout'),
     path('cadastro/', cadastro, name='cadastro'),  
     path('featured/', ProductFeaturedListView.as_view()),
     path('featured/<int:pk>/', ProductFeaturedDetailView.as_view()),
