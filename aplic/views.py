@@ -81,16 +81,21 @@ def index(request):
     return render(request, "index.html", context) 
 
 
-class SuporteView(TemplateView):
-    template_name = 'suporte.html'
+def suporte(request):
+    context = {
+                "title": "Página Suporte",
+                "content": "Bem vindo a página Suporte",
+            }
+    return render(request, "pedidos.html", context)
 
 
-class PedidosView(TemplateView):
-    template_name = 'pedidos.html'
+def pedidos(request):
+    context = {
+        "title": "Página Pedidos",
+        "content": "Bem vindo a página Pedidos",
+    }
+    return render(request, "pedidos.html", context)
 
-
-class ChatView(TemplateView):
-    template_name = 'chat/chatroom.html'
 
 
 def entrar(request):
@@ -145,11 +150,3 @@ def cadastro(request):
     return render(request, "auth/entrar.html", context)
     
     
-
-#chat-suporte
-def room(request, room_name):
-    return render(request, 'chatroom.html', {
-        'room_name': room_name
-
-    })
-        

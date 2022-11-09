@@ -3,8 +3,8 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import index, entrar, cadastro, cart_home
-from .views import (SuporteView,
-                    PedidosView,
+from .views import (suporte,
+                    pedidos,
                     ProductListView,
                     ProductDetailView,
                     ProductFeaturedListView,
@@ -14,8 +14,8 @@ from .views import (SuporteView,
 
 urlpatterns = [
     path('', index, name='index'),
-    path('suporte/', SuporteView.as_view(), name='suporte'),
-    path('pedidos/', PedidosView.as_view(), name='pedidos'),
+    path('suporte/', suporte, name='suporte'),
+    path('pedidos/', pedidos, name='pedidos'),
     path('entrar/', entrar, name='entrar'),
     path('cadastro/', cadastro, name='cadastro'),  
     path('featured/', ProductFeaturedListView.as_view()),
