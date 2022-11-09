@@ -15,7 +15,6 @@ class CargoAdmin(admin.ModelAdmin):
 class FuncionarioAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cpf', 'data_nascimento', 'salario')
 
-
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('__str__', 'slug')

@@ -2,7 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login, get_user_model, logout
 from .forms import LoginForm, RegisterForm
 
 from .models import Product
@@ -124,6 +124,10 @@ def entrar(request):
             print("Login inválido")
     return render(request, "auth/entrar.html", context)
     
+def logout_page(request):
+    logout(request)
+    return render(request, "auth/logout.html", {})
+
 
 def cart_home(request):
     cart_id = request.session.get("cart_id", None)
