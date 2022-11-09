@@ -125,8 +125,11 @@ def entrar(request):
     return render(request, "auth/entrar.html", context)
     
 def logout_page(request):
+    context = {
+        "content": "Logout efetuado com sucesso."
+    }
     logout(request)
-    return render(request, "auth/logout.html", {})
+    return render(request, "auth/logout.html", context)
 
 
 def cart_home(request):
