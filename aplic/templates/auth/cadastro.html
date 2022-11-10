@@ -1,9 +1,4 @@
 {% extends "base.html" %}
-{% load static %}
-{% block head_head %}
-<link rel="stylesheet" href="{% static 'css/login.css' %}" />
-{% endblock %}
-
 {% block content %}
 <form method='POST'> 
     {% csrf_token %}
