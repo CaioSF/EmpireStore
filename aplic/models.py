@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -90,6 +91,14 @@ class ProductQuerySet(models.query.QuerySet):
 
     def featured(self):
         return self.filter(featured = True, active=True)
+    
+    def search(self, query):
+        lookups = (
+            Q(title__contains = query) | 
+            Q(descricao__contains = query) | 
+            Q(valor__contains = query)
+        )
+        return self.filter(lookups).distinct()
 
 
 class ProductManager(models.Manager):
@@ -108,6 +117,9 @@ class ProductManager(models.Manager):
         if qs.count() == 1:
             return qs.first()
         return None
+
+    def search(self, query):
+        return self.get_queryset().active().search(query)
 
 
 class Product(models.Model):
