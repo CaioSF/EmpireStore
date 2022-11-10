@@ -1,41 +1,56 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">{% if nome_da_marca %} {{ nome_da_marca }} {% else %} Empire Store {% endif %}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+{% url 'index' as index_url %}
+{% url 'products' as products_url %}
+{% url 'suporte' as suporte_url %}
+{% url 'pedidos' as pedidos_url %}
+{% url 'entrar' as entrar_url %}
+{% url 'logout' as logout_url %}
+{% url 'cadastro' as cadastro_url %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3" style='min-height: 90px;'>
+    <div class="container">
+        <a class="navbar-brand" href="{{ index_url }}">
+            <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            {% if nome_da_marca %} {{ nome_da_marca }} {% else %} Empire Store {% endif %}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Produtos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ products_url }}">Todos os produtos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Mouse</a>          
+                        <a class="dropdown-item" href="#">Teclado</a>
+                        <a class="dropdown-item" href="#">Headset</a>
+                        <a class="dropdown-item" href="#">Controle</a>
+                        <a class="dropdown-item" href="#">Caixa de som</a>
+                    </div>
+                </li>
+            <li class="nav-item {% if request.path == suporte_url %} active {% endif %}">
+                <a class="nav-link" href="{{ suporte_url }}">Suporte</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Produtos
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'products' %}">Todos os produtos</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'index' %}">Mouse</a>          
-                    <a class="dropdown-item" href="#">Teclado</a>
-                    <a class="dropdown-item" href="#">Headset</a>
-                    <a class="dropdown-item" href="#">Controle</a>
-                    <a class="dropdown-item" href="#">Caixa de som</a>
-                </div>
+            <li class="nav-item {% if request.path == pedidos_url %} active {% endif %} ">
+                <a class="nav-link" href="{{ pedidos_url }}">Pedidos</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="{% url 'suporte' %}">Suporte</a>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item {% if request.path == logout_url %} active {% endif %} ">
+                <a class="nav-link" href=" {{ logout_url }}" >Logout</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="{% url 'entrar' %}">Login</a>
+            {% else %}
+            <li class="nav-item {% if request.path == entrar_url %} active {% endif %} ">
+                <a class="nav-link" href="{{ entrar_url }}">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="{% url 'cadastro' %}">Cadastro</a>
+            <li class="nav-item {% if request.path == cadastro_url %} active {% endif %} ">
+                <a class="nav-link" href="{{ cadastro_url }}">Cadastro</a>
             </li>
-      </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+            {% endif %}
+            </ul>
+            {% include 'search/snippets/search-form.html' %}
+        </div>
     </div>
 </nav>

@@ -2,7 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login, get_user_model, logout
 from .forms import LoginForm, RegisterForm
 
 from .models import Product
@@ -81,16 +81,21 @@ def index(request):
     return render(request, "index.html", context) 
 
 
-class SuporteView(TemplateView):
-    template_name = 'suporte.html'
+def suporte(request):
+    context = {
+                "title": "Página Suporte",
+                "content": "Bem vindo a página Suporte",
+            }
+    return render(request, "pedidos.html", context)
 
 
-class PedidosView(TemplateView):
-    template_name = 'pedidos.html'
+def pedidos(request):
+    context = {
+        "title": "Página Pedidos",
+        "content": "Bem vindo a página Pedidos",
+    }
+    return render(request, "pedidos.html", context)
 
-
-class ChatView(TemplateView):
-    template_name = 'chat/chatroom.html'
 
 
 def entrar(request):
@@ -119,6 +124,13 @@ def entrar(request):
             print("Login inválido")
     return render(request, "auth/entrar.html", context)
     
+def logout_page(request):
+    context = {
+        "content": "Logout efetuado com sucesso."
+    }
+    logout(request)
+    return render(request, "auth/logout.html", context)
+
 
 def cart_home(request):
     cart_id = request.session.get("cart_id", None)
@@ -145,11 +157,3 @@ def cadastro(request):
     return render(request, "auth/entrar.html", context)
     
     
-
-#chat-suporte
-def room(request, room_name):
-    return render(request, 'chatroom.html', {
-        'room_name': room_name
-
-    })
-        

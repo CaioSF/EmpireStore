@@ -2,10 +2,10 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import index, entrar, cadastro, cart_home
-from .views import (SuporteView,
-                    PedidosView,
-                    ProductListView,
+from django.views.generic import TemplateView
+
+from .views import index, entrar, cadastro, cart_home, suporte, pedidos, logout_page
+from .views import (ProductListView,
                     ProductDetailView,
                     ProductFeaturedListView,
                     ProductFeaturedDetailView,
@@ -14,10 +14,12 @@ from .views import (SuporteView,
 
 urlpatterns = [
     path('', index, name='index'),
-    path('suporte/', SuporteView.as_view(), name='suporte'),
-    path('pedidos/', PedidosView.as_view(), name='pedidos'),
+    path('suporte/', suporte, name='suporte'),
+    path('pedidos/', pedidos, name='pedidos'),
     path('entrar/', entrar, name='entrar'),
+    path('logout/', logout_page, name='logout'),
     path('cadastro/', cadastro, name='cadastro'),  
+    path('bootstrap/', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('featured/', ProductFeaturedListView.as_view()),
     path('featured/<int:pk>/', ProductFeaturedDetailView.as_view()),
     path('products/', ProductListView.as_view(), name='products'),
@@ -26,6 +28,7 @@ urlpatterns = [
     path('<slug:slug>/', ProductDetailSlugView.as_view(), name='detail'),
     path('cart/', cart_home, name='cart'),
 ]
+
 
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

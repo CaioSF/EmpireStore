@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -90,6 +91,14 @@ class ProductQuerySet(models.query.QuerySet):
 
     def featured(self):
         return self.filter(featured = True, active=True)
+    
+    def search(self, query):
+        lookups = (
+            Q(title__contains = query) | 
+            Q(descricao__contains = query) | 
+            Q(valor__contains = query)
+        )
+        return self.filter(lookups).distinct()
 
 
 class ProductManager(models.Manager):
@@ -109,6 +118,9 @@ class ProductManager(models.Manager):
             return qs.first()
         return None
 
+    def search(self, query):
+        return self.get_queryset().active().search(query)
+
 
 class Product(models.Model):
     OPCOES = (
@@ -122,7 +134,7 @@ class Product(models.Model):
     slug = models.SlugField(blank=True, unique=True)
     marca = models.CharField('Marca', max_length=50)
     modelo = models.CharField('Modelo', max_length=30)
-    descricao = models.TextField('Descricao', max_length=500)
+    descricao = models.TextField('Descricao', max_length=10000)
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
     title = models.CharField('title', max_length=250, default='Product')
     image = models.ImageField(upload_to='products/', null=True, blank=True)

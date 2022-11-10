@@ -4,25 +4,24 @@
 
 <title>Home Page Template</title>
 {% block content %}
-    <div class='text-center'>
-        <h1>{{ title }}</h1>
-             <p>{{ content }}</p>
-    </div>
-    <div class='container'>
+	<div class='text-center'>
+		<h1>{{ title }}</h1>
+				<p>{{ content }}</p>
+	</div>
+
 	<div class='row'>
-	    <div class='col'>
-		<img src="{% static 'img/eCommerce.jpeg' %}" class='img-fluid' />
+		<div class='col'>
+		<img src="{% static 'image/vader.jpg' %}" class='img-fluid' />
 		<p>{{ content }}</p>
-	    </div>
+		</div>
 	</div>
 
 	{% if request.user.is_authenticated %}
-	    <div class='row'>
+		<div class='row'>
 		<div class='col'>
-		    <h1>Premium</h1>
+			<h1>Premium</h1>
 			<p>{{ premium_content }}</p>
 		</div>
-	    </div>
+		</div>
 	{% endif %}
-    </div>
 {% endblock %}
