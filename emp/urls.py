@@ -7,4 +7,5 @@ from django.conf import settings
 urlpatterns = [
     path('restrito/', admin.site.urls),
     path('', include('aplic.urls')),
+    path('search', include("search.urls", namespace="search"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
