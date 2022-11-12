@@ -10,7 +10,7 @@ class FuncionarioAdmin(admin.ModelAdmin):
 
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
-    list_display =('nome', 'data_nascimento', 'email', 'senha', 'cpf', 'contato')
+    list_display =('nome', 'data_nascimento', 'email', 'cpf', 'contato')
 
 @admin.register(Cargo)
 class CargoAdmin(admin.ModelAdmin):

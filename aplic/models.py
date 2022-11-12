@@ -29,7 +29,6 @@ class Usuario(models.Model):
     nome = models.CharField('Nome completo', max_length=500)
     data_nascimento = models.DateField('Data de Nascimento', blank=True, null=True, help_text='Formato DD/MM/AAAA')
     email = models.EmailField('E-mail', max_length=200)
-    senha = models.CharField("Senha", max_length=20)
     cpf = models.CharField("CPF", max_length=11)
     contato = models.CharField("Telefone Celular", max_length=11, blank=True, null=True, help_text='DDD + Número')
     endereco = models.ForeignKey(Endereco, on_delete=models.DO_NOTHING)
