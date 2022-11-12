@@ -136,14 +136,14 @@ class Product(models.Model):
     modelo = models.CharField('Modelo', max_length=30)
     descricao = models.TextField('Descricao', max_length=10000)
     valor = models.DecimalField('Valor', max_digits=6, decimal_places=2)
-    title = models.CharField('title', max_length=250, default='Product')
+    title = models.CharField('Título', max_length=250, default='Product')
     image = models.ImageField(upload_to='products/', null=True, blank=True)
     featured = models.BooleanField(default = False)
     active = models.BooleanField(default = True)
 
     class Meta: 
-        verbose_name = 'Product'
-        verbose_name_plural = 'Products'
+        verbose_name = 'Produto'
+        verbose_name_plural = 'Produtos'
 
     objects = ProductManager()
 
@@ -160,7 +160,7 @@ def product_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)
 
-    pre_save.connect(product_pre_save_receiver, sender = Product)
+pre_save.connect(product_pre_save_receiver, sender = Product)
 
 
 
