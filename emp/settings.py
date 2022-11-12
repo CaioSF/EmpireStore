@@ -129,3 +129,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 LOGOUT_REDIRECT_URL = 'index'
+
+
+#emails
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

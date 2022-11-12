@@ -7,7 +7,7 @@
     <div class="card-body">
         <h5 class="card-title">{{ instance.title }}</h5>
         <p class="card-text">{{ instance.descricao | truncatewords:14 }}</p>
-        <a href="{{ instance.get_absolute_url }}" class="btn btn-primary">Detalhe</a>
-        <a href="{% url 'detail' slug=instance.slug %}" class="btn btn-warning">Atalho para a URL</a>
+        <a href="{{ instance.get_absolute_url }}" class="btn btn-primary">Detalhes</a>
+        <a href="{% url 'detail' slug=instance.slug %}" class="btn btn-warning">Ver produto</a>
     </div>
 </div>
