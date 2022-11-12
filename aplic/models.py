@@ -30,7 +30,6 @@ class Endereco(models.Model):
 class Usuario(models.Model):
     user = models.CharField('nome de usuario', max_length=100, default="user")
     nome = models.CharField('Nome', max_length=100)
-    cpf = models.CharField('CPF', max_length=11)
     data_nascimento = models.DateField('Data de Nascimento', blank=True, null=True, help_text='Formato DD/MM/AAAA')
     email = models.EmailField('email', max_length=200)
     senha = models.CharField('Senha', max_length=20)
@@ -64,6 +63,7 @@ class Cargo(models.Model):
 class Funcionario(Usuario):
     cargo = models.ForeignKey(Cargo, blank=True, on_delete=models.DO_NOTHING)
     salario = models.DecimalField('Salário', max_digits=6, decimal_places=2)
+    cpf = models.CharField('CPF', max_length=11)
 
     class Meta:
         verbose_name = 'Funcionario'
