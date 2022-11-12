@@ -1,19 +1,21 @@
 from re import A
 from django.contrib import admin
 
-from .models import Product, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor
+from .models import Product, Usuario, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor
 
-@admin.register(Cliente)
-class ClienteAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'cpf', 'data_nascimento')
 
 @admin.register(Cargo)
 class CargoAdmin(admin.ModelAdmin):
     list_display = ('cargo',)
 
+@admin.register(Usuario)
+class UsuarioAdmin(admin.ModelAdmin):
+        list_display = ('user', 'nome', 'cpf', 'data_nascimento', 'email', 'senha', 'contato')
+
+
 @admin.register(Funcionario)
 class FuncionarioAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'cpf', 'data_nascimento', 'salario')
+    list_display = ('cargo', 'salario')
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):

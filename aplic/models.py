@@ -34,26 +34,15 @@ class Usuario(models.Model):
     data_nascimento = models.DateField('Data de Nascimento', blank=True, null=True, help_text='Formato DD/MM/AAAA')
     email = models.EmailField('email', max_length=200)
     senha = models.CharField('Senha', max_length=20)
+    contato = models.CharField('Contato:', null=True, max_length=11, help_text='DDD + Número de telefone')
+    endereco = models.ForeignKey(Endereco, null=True, on_delete=models.DO_NOTHING)
 
     class Meta:
-        abstract = True
         verbose_name = 'Usuário'
         verbose_name_plural = "Usuários"
 
     def __str__(self):
         return self.nome
-
-class Cliente(Usuario):
-    contato = models.CharField('Contato:', null=True, max_length=11, help_text='DDD + Número de telefone')
-    endereco = models.ForeignKey(Endereco, null=True, on_delete=models.DO_NOTHING)
-
-    class Meta:
-        verbose_name = 'Cliente'
-        verbose_name_plural = 'Clientes'
-
-    def __str__(self):
-        return self.nome
-
 
 class Cargo(models.Model):
     OPCOES = (        
@@ -75,7 +64,6 @@ class Cargo(models.Model):
 class Funcionario(Usuario):
     cargo = models.ForeignKey(Cargo, blank=True, on_delete=models.DO_NOTHING)
     salario = models.DecimalField('Salário', max_digits=6, decimal_places=2)
-    endereco = models.ForeignKey(Endereco, null=True, on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name = 'Funcionario'
