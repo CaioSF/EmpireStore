@@ -28,6 +28,7 @@ class Endereco(models.Model):
 
 
 class Usuario(models.Model):
+    user = models.CharField('nome de usuario', max_length=100, default="user")
     nome = models.CharField('Nome', max_length=100)
     cpf = models.CharField('CPF', max_length=11)
     data_nascimento = models.DateField('Data de Nascimento', blank=True, null=True, help_text='Formato DD/MM/AAAA')

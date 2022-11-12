@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls.static import static
+from django.views.generic import TemplateView
 from django.conf import settings
-
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('restrito/', admin.site.urls),
     path('', include('aplic.urls')),
-    path('search', include("search.urls", namespace="search"))
+    path('search', include("search.urls", namespace="search")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
