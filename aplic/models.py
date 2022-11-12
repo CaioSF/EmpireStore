@@ -129,6 +129,7 @@ class Product(models.Model):
         ('Headset', 'Headset'),
         ('Controle', 'Controle'),
         ('Caixa de Som', 'Caixa de Som'),
+        ('Monitor', ('Monitor'),)
     )
     tipo = models.CharField('Tipo', blank=True, max_length=20, choices=OPCOES)
     slug = models.SlugField(blank=True, unique=True)
