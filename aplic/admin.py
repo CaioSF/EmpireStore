@@ -1,7 +1,7 @@
 from re import A
 from django.contrib import admin
 
-from .models import Product, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor, Cart
+from .models import Product, Cliente, Funcionario, Endereco, Cargo, Estoque, Forma_pagamento, Compra_fornecedor, Fornecedor
 
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
@@ -41,4 +41,3 @@ class Compra_fornecedorAdmin(admin.ModelAdmin):
 class FornecedorAdmin(admin.ModelAdmin):
     list_display = ('cnpj', 'inscricao_estadual', 'razao_social', 'contato',)
 
-admin.site.register(Cart)
