@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
-from .views import index, entrar, cadastro, cart_home, suporte, pedidos, logout_page
+from .views import index, entrar, cadastro, suporte, pedidos, logout_page
 from .views import (ProductListView,
                     ProductDetailView,
                     ProductFeaturedListView,
@@ -26,7 +26,6 @@ urlpatterns = [
     path('products/<int:pk>', ProductDetailView.as_view()),
     path('products/<slug:slug>/', ProductDetailSlugView.as_view()),
     path('<slug:slug>/', ProductDetailSlugView.as_view(), name='detail'),
-    path('cart/', cart_home, name='cart'),
 ]
 
 
