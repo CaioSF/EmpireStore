@@ -71,7 +71,6 @@ class Cargo(models.Model):
         return self.cargo
 
 
-
 class Funcionario(Usuario):
     cargo = models.ForeignKey(Cargo, blank=True, on_delete=models.DO_NOTHING)
     salario = models.DecimalField('Salário', max_digits=6, decimal_places=2)
