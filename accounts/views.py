@@ -52,7 +52,7 @@ def login_page(request):
                 return redirect( redirect_path )
             else:
                 # Redireciona para uma página de sucesso.
-                return redirect("/")
+                return redirect("home_page.html")
         else:
             #Retorna uma mensagem de erro de 'invalid login'.
             print("Login inválido")
