@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .forms import ContactForm
+
 
 def index(request):
     context = {
@@ -8,14 +10,17 @@ def index(request):
     }
     return render(request, "index.html", context)
 
+
 def support(request):
+    contact_form = ContactForm(request.POST or None)
     context = {
         "title": "Página suporte",
-        "content": "Bem-vindo a página suporte"
+        "content": "Bem-vindo a página suporte",
+        "form": contact_form
     }
+    if contact_form.is_valid():
+        print(contact_form.cleaned_data)
     return render(request, "support.html", context)
-
-
 
 
 def login(request):
@@ -24,6 +29,7 @@ def login(request):
         "content": "Bem-vindo a página de login"
     }
     return render(request, "auth/login.html", context)
+
 
 def register(request):
     context = {
