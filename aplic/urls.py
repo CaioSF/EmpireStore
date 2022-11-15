@@ -2,13 +2,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-from .views import home_page, contact_page, login_page, register_page
+from .views import home_page, contact_page, login_page, logout_page, register_page
 
 urlpatterns = [
-	path('', home_page),
-	path('contact/', contact_page),
-    path('login/', login_page),
-    path('register/', register_page),
+	path('', home_page, name='home'),
+	path('contact/', contact_page, name='contact'),
+    path('login/', login_page, name='login'),
+    path('logout/', logout_page, name='logout'),
+    path('register/', register_page, name='register'),
 
 ]
 if settings.DEBUG:
