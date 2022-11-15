@@ -15,6 +15,9 @@ def support(request):
     }
     return render(request, "support.html", context)
 
+
+
+
 def login(request):
     context = {
         "title": "Página de login",
