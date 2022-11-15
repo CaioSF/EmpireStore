@@ -1,4 +1,4 @@
-#!C:\Users\pedro\Projects\EmpireStore\venv\Scripts\python.exe
+#!C:\Users\berse\desktop\empchat\venv\scripts\python.exe
 # -*- coding: utf-8 -*-
 
 USAGE = """Usage: echo "Héllo Wörld" | slugify # => hello-world"""

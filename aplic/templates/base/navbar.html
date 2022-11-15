@@ -34,7 +34,7 @@
                     </div>
                 </li>
             <li class="nav-item {% if request.path == suporte_url %} active {% endif %}">
-                <a class="nav-link" href="{{ suporte_url }}">Suporte</a>
+                <a class="nav-link" href="{% url 'home' %}" >Suporte</a>
             </li>
             <li class="nav-item {% if request.path == pedidos_url %} active {% endif %} ">
                 <a class="nav-link" href="{{ pedidos_url }}">Pedidos</a>

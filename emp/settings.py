@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'search',
     'tags',
     'carts',
+    'chat',
+    
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,4 @@ LOGOUT_REDIRECT_URL = 'index'
 
 #email
 
+APPEND_SLASH= False

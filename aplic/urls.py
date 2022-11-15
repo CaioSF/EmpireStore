@@ -3,8 +3,9 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from chat.urls import urlpatterns
 
-
+from chat.views import home, room
 from carts.views import cart_home
 from .views import index, entrar, cadastro, suporte, pedidos, logout_page
 from .views import (ProductListView,
@@ -16,6 +17,7 @@ from .views import (ProductListView,
 
 urlpatterns = [
     path('', index, name='index'),
+    path('chat/', home, name='chat'),
     path('suporte/', suporte, name='suporte'),
     path('pedidos/', pedidos, name='pedidos'),
     path('entrar/', entrar, name='entrar'),
@@ -30,6 +32,8 @@ urlpatterns = [
     path('<slug:slug>/', ProductDetailSlugView.as_view(), name='detail'),
     path('cart/', cart_home, name='cart'),
 ]
+
+
 
 
 
