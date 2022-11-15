@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # our apps
     'aplic',
     'products',
+    'search',
 ]
 
 
