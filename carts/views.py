@@ -1,5 +1,6 @@
 from django.shortcuts import render
+from .models import Cart
 
 def cart_home(request):
-    request.session['first_name'] = 'Pedro'
-    return render(request, "carts/home.html", {} )
+    cart_obj, new_obj = Cart.objects.new_or_get(request)
+    return render(request, "carts/home.html", {})
