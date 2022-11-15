@@ -7,4 +7,5 @@ urlpatterns = [
     path('', include('aplic.urls')),
     path('products/', include("products.urls", namespace="products")),
     path('search/', include("search.urls", namespace="search")),
+    path('cart/', include("carts.urls", namespace="cart")),
 ]

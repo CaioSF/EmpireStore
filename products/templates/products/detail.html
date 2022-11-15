@@ -2,16 +2,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class='container'>
-    <div class='row'>
-        <div class='col'>
-            <h1>{{ object.title }}</h1>
-            <h3>{{ "Um título qualquer"|title }}</h3>
-            {{ object.description|linebreaks }} <br/>
-            {% if object.image %}
-                <img src='{{ object.image.url }}' class='img-fluid'/>
-            {% endif %}
-        </div>
+
+  <div class='row'>
+    <div class='col-12 col-md-6'>
+      <h1>{{ object.title }}</h1>
+      {{ object.timestamp|timesince }} atrás
+      <h3>{{ "Um título qualquer"|title }}</h3>
+      {{ object.description|linebreaks }} <br/>
+      {% if object.image %}
+        <img src='{{ object.image.url }}' class='img-fluid'/>
+      {% endif %}
     </div>
-</div>
+    <div class='col-12 col-md-6'>
+      {{ cart }}
+      {% if object in cart.products.all %}
+      Produto no carrinho<button class='btn btn-link'>Excluir</button>
+      {% else %}
+      <button class='btn btn-success'>Adicionar ao carrinho</button>
+      {% endif %}
+    </div>
+  </div>
+
 {% endblock content %}
