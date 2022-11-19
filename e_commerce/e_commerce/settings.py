@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'products',
     'search',
     'tags',
+    'chat',
 ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
