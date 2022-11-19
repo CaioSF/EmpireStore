@@ -9,13 +9,11 @@ from carts.views import cart_home, cart_detail_api_view
 from accounts.views import login_page, register_page, logout_page, guest_register_view
 from addresses.views import checkout_address_create_view, checkout_address_reuse_view
 from .views import (home_page,  
-                    about_page, 
                     contact_page
 )
 
 urlpatterns = [
     path('', home_page, name='home'),
-    path('about/', about_page, name='about'),
     path('contact/', contact_page, name='contact'),
     path('cart/', include("carts.urls", namespace="cart")),
     path('checkout/address/create/', checkout_address_create_view, name='checkout_address_create'),
@@ -30,6 +28,7 @@ urlpatterns = [
     path('products/', include("products.urls", namespace="products")),
     path('restrito/', admin.site.urls),
 ]
+
 
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

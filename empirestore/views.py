@@ -13,12 +13,6 @@ def home_page(request):
         context["premium_content"] = "Você é um usuário Premium"
     return render(request, "home_page.html", context)
     
-def about_page(request):
-    context = {
-                    "title": "Página Sobre",
-                    "content": "Bem vindo a página sobre"
-              }
-    return render(request, "about/view.html", context)
 
 def contact_page(request):
     contact_form = ContactForm(request.POST or None)
