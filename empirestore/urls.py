@@ -26,6 +26,7 @@ urlpatterns = [
     path('bootstrap/', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('search/', include("search.urls", namespace="search")),
     path('products/', include("products.urls", namespace="products")),
+    path('', include('chat.urls')),
     path('restrito/', admin.site.urls),
 ]
 
