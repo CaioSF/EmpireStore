@@ -18,7 +18,7 @@ def contact_page(request):
     contact_form = ContactForm(request.POST or None)
     context = {
                     "title": "Como podemos te ajudar?",
-                    "content": "Envie-nos um e-mail para que possamos esclarecer suas dúvidas.",
+                    "content": "Ou envie-nos um e-mail",
                     "form": contact_form	
               }
     if contact_form.is_valid():
