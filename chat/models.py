@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Create your models here.
 class Room(models.Model):
@@ -11,7 +11,7 @@ class Room(models.Model):
 class Message(models.Model):
     name = models.ForeignKey(Room, on_delete=models.CASCADE, null = True, blank = True)
     value = models.CharField(max_length=1000000)
-    date = models.DateTimeField(default=datetime.now, blank=True)
+    date = models.DateTimeField(default=datetime.date, blank=True)
     user = models.CharField(max_length=1000000)
     room = models.CharField(max_length=1000000)
 

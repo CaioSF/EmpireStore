@@ -8,7 +8,7 @@
         <h5 class="card-title">{{ instance.title }}</h5>
         <p class="card-text">{{ instance.description|truncatewords:14 }}</p>
         <p class="card-text">R$ {{ instance.price }}</p>
-        <a href="{{ instance.get_absolute_url }}" class="btn btn-primary">Detalhe</a>
+        <a href="{{ instance.get_absolute_url }}" class="btn btn-primary mb-1">Detalhe</a>
         {% include 'products/snippets/update-cart.html' with product=instance cart=cart %}
         <!-- <a href="{% url 'products:detail' slug=instance.slug %}" class="btn btn-warning">Atalho para a URL</a> -->
     </div>
