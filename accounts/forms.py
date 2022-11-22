@@ -11,7 +11,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(label="Senha", widget=forms.PasswordInput)
 
 class RegisterForm(forms.Form):
-    username = forms.CharField(label="Nome de usuário")
+    username = forms.CharField(label="Nome de usuário" ,widget=forms.TextInput(attrs={'placeholder': 'Search'}))
     email = forms.EmailField(label="E-mail")
     password = forms.CharField(label="Senha", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirme sua senha", widget=forms.PasswordInput)
