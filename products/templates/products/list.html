@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
     
-    <div class='row'>
+    <div class='row '>
         {% for obj in object_list %}
-            <div class='col'>
+            <div class='col d-flex justify-content-center'>
             {% include 'products/snippets/card.html' with instance=obj %}
             {% if forloop.counter|divisibleby:3 %}
                 </div><!--close the row--></div><!--close the col--><div class='row'><div class='col-12'><hr/></div>
@@ -12,7 +12,21 @@
             {% else %}
                 </div>
             {% endif%}
+            <br><br>
+            
         {% endfor%}
+        
+    </div>
+    <div class="text-light" style="text-align: center">
+        {% if page_obj.has_previous %}
+        <a href="?page ={{page_obj.previous_page_number}}">&lt;</a>
+        {% endif %}
+
+        <span> Página {{ page_obj.number}} de {{ page_obj.paginator.num_pages}}</span>
+        
+        {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}">&gt;</a>
+        {% endif %}
     </div>
    
 {% endblock content %}
