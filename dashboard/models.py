@@ -2,6 +2,7 @@ from django.db import models
 from typing import ClassVar
 from django.db import models
 import datetime
+from products.models import Product
 
 class Produto(models.Model):
     nome = models.CharField(max_length=50)
@@ -17,7 +18,7 @@ class Vendedor(models.Model):
         return self.nome
 
 class Vendas(models.Model):
-    nome_produto = models.ForeignKey(Produto, on_delete=models.DO_NOTHING)
+    produto = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
     vendedor = models.ForeignKey(Vendedor, on_delete=models.DO_NOTHING)
     total = models.FloatField()
     data = models.DateTimeField(default=datetime.datetime.now())
