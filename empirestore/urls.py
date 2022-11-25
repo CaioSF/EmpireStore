@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
-
+from dashboard.views import dashboard, retorna_total_vendido, relatorio_produtos
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView 
 from django.urls import path, include
@@ -15,6 +15,7 @@ from .views import (home_page,
 urlpatterns = [
     path('', home_page, name='home'),
     path('contact/', contact_page, name='contact'),
+    path('dashboard/', dashboard, name = 'dashboard'),    
     path('cart/', include("carts.urls", namespace="cart")),
     path('checkout/address/create/', checkout_address_create_view, name='checkout_address_create'),
     path('checkout/address/reuse/', checkout_address_reuse_view, name='checkout_address_reuse'),
@@ -26,9 +27,10 @@ urlpatterns = [
     path('bootstrap/', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('search/', include("search.urls", namespace="search")),
     path('products/', include("products.urls", namespace="products")),
+    path('retorna_total_vendido/', retorna_total_vendido, name="retorna_total_vendido"),
+    path('relatorio_produtos/', relatorio_produtos, name="relatorio_produtos"),
     path('restrito/', admin.site.urls),
     path('', include('chat.urls')),
-
 ]
 
 

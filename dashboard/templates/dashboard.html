@@ -1,0 +1,79 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+ 
+{% block 'titulo' %}Dashboard{% endblock%}
+
+{% block 'head' %}
+
+<link rel="stylesheet" href="{% static 'css/css.css' %}">
+{% endblock%}
+
+
+{% block 'body' %}
+<div class="container ">
+    <br>
+    <div class="row ">
+
+        <div  class="col-md informacoes_basicas">
+            
+            <h1> <svg class="icone" xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+                <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+            </svg> &nbspR$ <span id="faturamento_total">10</span></h1> 
+            
+        </div>
+
+        
+    </div>
+
+
+    
+    <div class="container ">
+        <div class="row justify-content-center">
+            
+            <div class="col-md-6">
+                <br>
+
+                <h1 class="text-center">Produtos mais vendidos</h1>
+                <canvas id="produtos_mais_vendidos" width="1" height="2"></canvas>
+            </div>
+            
+            
+        </div>
+    </div>
+
+
+</div>
+<br>
+<footer class="container">
+    <br>
+    <div class="row">
+        <div style="color: white;" class="col-md centralizar">
+          CNPJ: 47.676.264/0001-23
+        </div>
+
+        <div style="color: white;" class="col-md centralizar">
+          2022 Empire Store. Todos os direitos reservados.
+        </div>
+
+        <div style="color: white;" class="col-md centralizar">
+          empirestore@gmail.com.br
+        </div>
+    </div>
+    <br>
+
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/js.js' %}"></script>
+
+
+<script>
+    window.onload = function(e){
+    renderiza_total_vendido('{% url "retorna_total_vendido" %}')
+    renderiza_produtos_mais_vendidos('{% url "relatorio_produtos" %}')
+    
+
+
+}
+</script>
+{% endblock %}
