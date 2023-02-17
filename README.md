@@ -1,6 +1,6 @@
 # EmpireStore
 
-Nesse projeto foi usado o framework Django do python. 
+Nesse projeto foi usado o framework Django do Python. 
 
 Esse projeto é um protótipo de um E-commerce de periférico para computador. Ferramentas do site:
 
